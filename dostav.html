@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказать</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Адрес доставки</h2>
+    <form>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email (Необязательно):</label>
+        <input type="email" id="email" name="email">
+
+        <label for="address">Адресс:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="country">Страна:</label>
+        <select id="country" name="country" required>
+            <option value="">Выбрать...</option>
+               <option value="usa">Америка</option>
+               <option value="canada">Канада</option>
+               <option value="uk">Великобритания</option>
+               <option value="germany">Германия</option>
+               <option value="nigeria">Нигерия</option>
+               <option value="gandoras">Гандурас</option>
+               <option value="Kazakhstan">Казахстан</option>
+               <option value="Russia">Россия</option>
+        </select>
+
+        <label for="payment-method">Способ оплаты:</label>
+        <select id="payment-method" name="payment-method" required>
+            <option value="">Выбрать...</option>
+            <option value="card">Кредитная карта</option>
+            <option value="cash">Наличка</option>
+        </select>
+
+        <label for="card-info">Информация о кредитной карте:</label>
+        <div id="card-info" style="display: none;">
+            <label for="card-name">Имя на карте (только английские буквы):</label>
+            <input type="text" id="card-name" name="card-name" pattern="[A-Za-z]+" title="Пожалуйста, введите только английские буквы">
+
+
+            <label for="card-number">Номер:</label>
+            <input type="text" id="card-number" name="card-number" maxlength="16">
+
+            <label for="card-expiry">Дата окончания (MM/YY):</label>
+            <input type="text" id="card-expiry" name="card-expiry" pattern="^(0[1-9]|1[0-2])\/\d{2}$" title="Пожалуйста, введите дату в формате MM/YY">
+
+
+            <label for="card-cvv">CVV:</label>
+            <input type="text" id="card-cvv" name="card-cvv" maxlength="3">
+        </div>
+
+        <button type="submit">Разместить заказ</button>
+    </form>
+
+    <script>
+        document.getElementById('payment-method').addEventListener('change', function() {
+            if (this.value === 'card') {
+                document.getElementById('card-info').style.display = 'block';
+            } else {
+                document.getElementById('card-info').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
